@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Retix — Dashboard</title>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <h1>Retix</h1>
+    <span>🇮🇳 B2B Platform</span>
+  </div>
+  <div class="sb-user">
+    <div class="sb-avatar" id="sbInit">R</div>
+    <div><div class="sb-uname" id="sbName">Loading…</div><div class="sb-role">Business Account</div></div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-label">Main</div>
+    <button class="nav-item" id="nav-overview" onclick="nav('overview')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span>Overview</span>
+    </button>
+    <button class="nav-item" id="nav-orders" onclick="nav('orders')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      <span>Orders</span>
+    </button>
+    <button class="nav-item" id="nav-inventory" onclick="nav('inventory')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      <span>Inventory</span>
+    </button>
+    <button class="nav-item" id="nav-distributors" onclick="nav('distributors')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <span>Distributors</span>
+    </button>
+    <button class="nav-item" id="nav-khata" onclick="nav('khata')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span>Khata Ledger</span>
+    </button>
+  </nav>
+  <div class="sb-bottom">
+    <button class="logout-btn" id="dashLogout">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      <span>Logout</span>
+    </button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div>
+      <div class="page-title" id="pageTitle">Overview</div>
+      <div class="page-sub" id="pageSub">Your business at a glance</div>
+    </div>
+    <div class="greeting">👋 Hello, <strong id="topName">User</strong></div>
+  </div>
+
+  <div class="content">
+
+    <!-- STATS (shown always) -->
+    <div class="stats">
+      <div class="stat"><div class="stat-bar s"></div><div class="stat-icon">📦</div><div class="stat-num" id="stat-orders">—</div><div class="stat-lbl">Total Orders</div></div>
+      <div class="stat"><div class="stat-bar g"></div><div class="stat-icon">💰</div><div class="stat-num" id="stat-rev">—</div><div class="stat-lbl">Total Revenue</div></div>
+      <div class="stat"><div class="stat-bar b"></div><div class="stat-icon">🏭</div><div class="stat-num" id="stat-inv">—</div><div class="stat-lbl">SKUs Tracked</div></div>
+      <div class="stat"><div class="stat-bar y"></div><div class="stat-icon">🤝</div><div class="stat-num" id="stat-dist">—</div><div class="stat-lbl">Distributors</div></div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="section active" id="sec-overview">
+      <div class="sec-head"><span class="sec-title">Your Services</span></div>
+      <div class="ov-grid">
+        <div class="ov-card" onclick="nav('orders')">
+          <div class="ov-card-count" id="ov-orders">0</div>
+          <div class="ov-card-icon">📦</div>
+          <h3>Orders</h3>
+          <p>Track all incoming and outgoing B2B orders. Record status, amounts and distributors.</p>
+        </div>
+        <div class="ov-card" onclick="nav('inventory')">
+          <div class="ov-card-count" id="ov-inv">0</div>
+          <div class="ov-card-icon">🏭</div>
+          <h3>Inventory</h3>
+          <p>Monitor stock levels across all SKUs. Get alerts when stock falls below reorder level.</p>
+        </div>
+        <div class="ov-card" onclick="nav('distributors')">
+          <div class="ov-card-count" id="ov-dist">0</div>
+          <div class="ov-card-icon">🤝</div>
+          <h3>Distributors</h3>
+          <p>Manage your entire distributor network — contacts, territories and outstanding balances.</p>
+        </div>
+        <div class="ov-card" onclick="nav('khata')">
+          <div class="ov-card-count" id="ov-khata">0</div>
+          <div class="ov-card-icon">📒</div>
+          <h3>Khata Ledger</h3>
+          <p>Digital hisaab kitaab. Track every credit and debit entry for each party.</p>
+        </div>
+        <div class="ov-card" style="cursor:default;opacity:0.5">
+          <div class="ov-card-icon">📊</div>
+          <h3>Analytics <span style="font-size:0.7rem;background:var(--cream2);padding:2px 7px;border-radius:4px;color:var(--muted)">Soon</span></h3>
+          <p>Deep sales analytics, demand forecasting and profit/loss reports.</p>
+        </div>
+        <div class="ov-card" style="cursor:default;opacity:0.5">
+          <div class="ov-card-icon">🚚</div>
+          <h3>Route Optimizer <span style="font-size:0.7rem;background:var(--cream2);padding:2px 7px;border-radius:4px;color:var(--muted)">Soon</span></h3>
+          <p>AI-powered delivery route planning to cut logistics cost by up to 30%.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDERS -->
+    <div class="section" id="sec-orders">
+      <div class="sec-head">
+        <span class="sec-title">All Orders</span>
+        <button class="btn-add" onclick="openModal('modal-order')">+ Add Order</button>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Product</th><th>Distributor</th><th>Qty</th><th>Amount</th><th>Date</th><th>Status</th><th></th></tr></thead>
+          <tbody id="orders-body"><tr><td colspan="7"><div class="empty"><div class="empty-icon">⏳</div><h3>Loading…</h3></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INVENTORY -->
+    <div class="section" id="sec-inventory">
+      <div class="sec-head">
+        <span class="sec-title">Inventory</span>
+        <button class="btn-add" onclick="openModal('modal-inv')">+ Add Item</button>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Product / SKU</th><th>Category</th><th>Quantity</th><th>Reorder At</th><th>Buy Price</th><th>Status</th><th></th></tr></thead>
+          <tbody id="inv-body"><tr><td colspan="7"><div class="empty"><div class="empty-icon">⏳</div><h3>Loading…</h3></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DISTRIBUTORS -->
+    <div class="section" id="sec-distributors">
+      <div class="sec-head">
+        <span class="sec-title">Distributor Network</span>
+        <button class="btn-add" onclick="openModal('modal-dist')">+ Add Distributor</button>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Name</th><th>Phone</th><th>Location</th><th>Territory</th><th>Balance</th><th></th></tr></thead>
+          <tbody id="dist-body"><tr><td colspan="6"><div class="empty"><div class="empty-icon">⏳</div><h3>Loading…</h3></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- KHATA -->
+    <div class="section" id="sec-khata">
+      <div class="sec-head">
+        <span class="sec-title">Khata Ledger</span>
+        <button class="btn-add" onclick="openModal('modal-khata')">+ Add Entry</button>
+      </div>
+      <div class="khata-summary">
+        <div class="k-sum"><div class="k-sum-lbl">Total Credit (Received)</div><div class="k-sum-val credit" id="k-credit">₹0</div></div>
+        <div class="k-sum"><div class="k-sum-lbl">Total Debit (Paid Out)</div><div class="k-sum-val debit" id="k-debit">₹0</div></div>
+      </div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Party Name</th><th>Type</th><th>Amount</th><th>Description</th><th>Date</th><th></th></tr></thead>
+          <tbody id="khata-body"><tr><td colspan="6"><div class="empty"><div class="empty-icon">⏳</div><h3>Loading…</h3></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<!-- MODALS -->
+
+<!-- Order Modal -->
+<div class="modal-bg" id="modal-order" onclick="if(event.target===this)closeModal('modal-order')">
+  <div class="modal">
+    <h2>Add New Order</h2>
+    <p>Record a B2B order with full details</p>
+    <form onsubmit="addOrder(event)">
+      <div class="form-row">
+        <div class="form-group"><label>Product Name *</label><input id="o-product" placeholder="e.g. Tata Salt 1kg" required></div>
+        <div class="form-group"><label>Distributor *</label><input id="o-dist" placeholder="e.g. Sharma Traders" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Quantity *</label><input id="o-qty" type="number" min="1" placeholder="100" required></div>
+        <div class="form-group"><label>Unit</label><input id="o-unit" placeholder="units / kg / boxes" value="units"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Total Amount (₹) *</label><input id="o-amount" type="number" step="0.01" placeholder="5000" required></div>
+        <div class="form-group"><label>Status</label>
+          <select id="o-status"><option>Pending</option><option>In Transit</option><option>Delivered</option><option>Cancelled</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Notes</label><textarea id="o-notes" rows="2" placeholder="Optional notes…" style="resize:vertical"></textarea></div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-save">Save Order</button>
+        <button type="button" class="btn-cancel" onclick="closeModal('modal-order')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Inventory Modal -->
+<div class="modal-bg" id="modal-inv" onclick="if(event.target===this)closeModal('modal-inv')">
+  <div class="modal">
+    <h2>Add Inventory Item</h2>
+    <p>Add a product to your stock tracking</p>
+    <form onsubmit="addInventory(event)">
+      <div class="form-row">
+        <div class="form-group"><label>Product Name *</label><input id="i-name" placeholder="e.g. Fortune Oil 5L" required></div>
+        <div class="form-group"><label>SKU Code</label><input id="i-sku" placeholder="e.g. FO-022"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Category</label><input id="i-cat" placeholder="e.g. Edible Oils"></div>
+        <div class="form-group"><label>Unit</label><input id="i-unit" placeholder="units / kg / litres" value="units"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Current Quantity *</label><input id="i-qty" type="number" min="0" placeholder="0" required></div>
+        <div class="form-group"><label>Reorder Level</label><input id="i-reorder" type="number" min="0" placeholder="10" value="10"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Buying Price (₹)</label><input id="i-buy" type="number" step="0.01" placeholder="0"></div>
+        <div class="form-group"><label>Selling Price (₹)</label><input id="i-sell" type="number" step="0.01" placeholder="0"></div>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-save">Save Item</button>
+        <button type="button" class="btn-cancel" onclick="closeModal('modal-inv')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Distributor Modal -->
+<div class="modal-bg" id="modal-dist" onclick="if(event.target===this)closeModal('modal-dist')">
+  <div class="modal">
+    <h2>Add Distributor</h2>
+    <p>Add a new distributor to your network</p>
+    <form onsubmit="addDistributor(event)">
+      <div class="form-row">
+        <div class="form-group"><label>Name *</label><input id="d-name" placeholder="e.g. Sharma Traders" required></div>
+        <div class="form-group"><label>Phone</label><input id="d-phone" placeholder="9XXXXXXXXX"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Location</label><input id="d-loc" placeholder="e.g. Chandni Chowk, Delhi"></div>
+        <div class="form-group"><label>Territory</label><input id="d-territory" placeholder="e.g. North Delhi"></div>
+      </div>
+      <div class="form-group"><label>Outstanding Balance (₹)</label><input id="d-balance" type="number" step="0.01" placeholder="0" value="0"></div>
+      <div class="form-group"><label>Notes</label><textarea id="d-notes" rows="2" placeholder="Optional notes…" style="resize:vertical"></textarea></div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-save">Save</button>
+        <button type="button" class="btn-cancel" onclick="closeModal('modal-dist')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Khata Modal -->
+<div class="modal-bg" id="modal-khata" onclick="if(event.target===this)closeModal('modal-khata')">
+  <div class="modal">
+    <h2>Add Khata Entry</h2>
+    <p>Record a credit or debit transaction</p>
+    <form onsubmit="addKhata(event)">
+      <div class="form-row">
+        <div class="form-group"><label>Party Name *</label><input id="k-party" placeholder="e.g. Ramesh Kirana" required></div>
+        <div class="form-group"><label>Type *</label>
+          <select id="k-type"><option>Credit</option><option>Debit</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Amount (₹) *</label><input id="k-amount" type="number" step="0.01" placeholder="0" required></div>
+        <div class="form-group"><label>Date</label><input id="k-date" type="date"></div>
+      </div>
+      <div class="form-group"><label>Description</label><textarea id="k-desc" rows="2" placeholder="What was this for?" style="resize:vertical"></textarea></div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-save">Save Entry</button>
+        <button type="button" class="btn-cancel" onclick="closeModal('modal-khata')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-title" id="tTitle"></div>
+  <div class="toast-msg" id="tMsg"></div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

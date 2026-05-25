@@ -262,10 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Success
-                closeAuthModal();
-                await updateAuthUI();
-                launchToast('Account Created! 🎉', `Welcome to Retix, ${name}! You are now logged in.`, 'success');
+                // Success — redirect to dashboard
+                launchToast('Account Created! 🎉', `Welcome, ${name}! Taking you to your dashboard...`, 'success');
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
 
             } catch (err) {
                 launchToast('Unexpected Error', 'Something went wrong. Please try again.', 'error');
@@ -310,10 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                closeAuthModal();
-                await updateAuthUI();
                 const firstName = data.user?.user_metadata?.full_name?.split(' ')[0] || 'User';
-                launchToast('Welcome Back! 👋', `Hello, ${firstName}! You are logged in.`, 'success');
+                launchToast('Welcome Back! 👋', `Hello, ${firstName}! Taking you to your dashboard...`, 'success');
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
 
             } catch (err) {
                 launchToast('Unexpected Error', 'Something went wrong. Please try again.', 'error');
